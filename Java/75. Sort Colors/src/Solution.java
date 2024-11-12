@@ -9,5 +9,6 @@ class Solution {
                 }
             }
         }
+        int para = 0;
     }
 }
