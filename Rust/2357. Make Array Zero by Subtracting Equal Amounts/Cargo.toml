@@ -1,0 +1,6 @@
+[package]
+name = "make_array_zero_by_subtracting_equal_amounts"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
