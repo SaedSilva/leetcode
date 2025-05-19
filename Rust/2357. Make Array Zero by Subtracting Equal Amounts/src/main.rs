@@ -1,3 +1,5 @@
+use std::collections::{HashMap, HashSet};
+
 fn main() {
     println!("Hello, world!");
 }
@@ -6,30 +8,15 @@ struct Solution {}
 
 impl Solution {
     pub fn minimum_operations(nums: Vec<i32>) -> i32 {
-        let mut nums = nums;
-        Self::apply(&mut nums, 0)
-    }
-
-    fn apply(nums: &mut Vec<i32>, operations: i32) -> i32 {
-        if nums.len() == 0 {
-            return operations - 1;
-        }
-        nums.retain(|&x| x != 0);
-        let min: i32 = {
-            let mut min = 0;
-            for num in nums.iter() {
-                if min == 0 || num < &min {
-                    min = *num;
-                }
+        let mut map: HashSet<i32> = HashSet::new();
+        
+        for num in nums.into_iter().filter(|&x| { x != 0}) {
+            if !map.contains(&num) {
+                map.insert(num);
             }
-            min
-        };
-
-        for x in nums.iter_mut() {
-            *x -= min;
         }
         
-        Self::apply(nums, operations + 1)
+        map.len() as i32
     }
 }
 
