@@ -21,14 +21,15 @@ impl Solution {
         
         for i in 0..delta.len() {
             if i == 0 {
-                continue
+                if nums[i] > delta[i] {
+                    return false;
+                }
+                continue;
             }
             delta[i] += delta[i - 1];
-        }
-        
-        for i in 0..nums.len() {
-            if nums[i] > delta[i] {
-                return false
+            println!("{:?}", delta);
+            if i < delta.len() -1 && nums[i] > delta[i] {
+                return false;
             }
         }
         
