@@ -10,26 +10,26 @@ impl Solution {
             return;
         }
         
-        let mut tem_zero_na_coluna = false;
         let mut tem_zero_na_linha = false;
-
-        //testar primeira coluna
-        for coluna in 0..matrix[0].len() {
-            if matrix[0][coluna] == 0 {
-                tem_zero_na_coluna = true;
-                break;
-            }
-        }
+        let mut tem_zero_na_coluna = false;
 
         //testar primeira linha
-        for linha in 0..matrix.len() {
-            if matrix[linha][0] == 0 {
+        for coluna in 0..matrix[0].len() {
+            if matrix[0][coluna] == 0 {
                 tem_zero_na_linha = true;
                 break;
             }
         }
 
-        //testar todos os elementos, a partir da 2 linha e coluna
+        //testar primeira coluna
+        for linha in 0..matrix.len() {
+            if matrix[linha][0] == 0 {
+                tem_zero_na_coluna = true;
+                break;
+            }
+        }
+
+        //testar todos os elementos, a partir da 2 linha e 2 coluna
         for linha in 1..matrix.len() {
             for coluna in 1..matrix[linha].len() {
                 if matrix[linha][coluna] == 0 {
@@ -57,13 +57,13 @@ impl Solution {
             }
         }
         
-        if tem_zero_na_coluna {
+        if tem_zero_na_linha {
             for coluna in 0..matrix[0].len() {
                 matrix[0][coluna] = 0;
             }
         }
         
-        if tem_zero_na_linha {
+        if tem_zero_na_coluna {
             for linha in 0..matrix.len() {
                 matrix[linha][0] = 0;
             }
